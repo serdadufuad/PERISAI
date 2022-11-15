@@ -22,54 +22,36 @@
         <div class="col-xl-4 stretch-card grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <div class="card card-stat stretch-card mb-3">
+                    <div class="card stretch-card mb-2" style="background-image: url('{{ asset('assets/images/dashboard/card1.jpg')}}'); background-size: cover;">
+                        <div class="card-body d-flex flex-wrap justify-content-between">
+                            <div>
+                                <h4 class="font-weight-semibold mb-1 text-light"> Total Anggaran </h4>
+                                <a href="{{ ('/detail_total_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
+                            </div>
+                            <h3 class="text-light font-weight-bold">Rp 99.258.456.357,-</h3>
+                        </div>
+                    </div>
+                    <div class="card stretch-card mb-2" style="background-image: url('{{ asset('assets/images/dashboard/card2.jpg')}}'); background-size: cover;">
+                        <div class="card-body d-flex flex-wrap justify-content-between">
+                            <div>
+                                <h4 class="font-weight-semibold mb-1 text-light"> Realisasi Anggaran </h4>
+                                <a href="{{ ('/detail_realisasi_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
+                            </div>
+                            <h3 class="text-light font-weight-bold">Rp 45.258.456.357,-</h3>
+                        </div>
+                    </div>
+                    <div class="card stretch-card mb-2" style="background-image: url('{{ asset('assets/images/dashboard/card3.jpg')}}'); background-size: cover;">
+                        <div class="card-body d-flex flex-wrap justify-content-between">
+                            <div>
+                                <h4 class="font-weight-semibold mb-1 text-light"> Total ABT </h4>
+                                <a href="{{ ('/detail_total_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
+                            </div>
+                            <h3 class="text-light font-weight-bold">Rp 35.258.456.357,-</h3>
+                        </div>
+                    </div>
+                    <div class="card stretch-card mb-2">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="text-white">
-                                    <h3 class="font-weight-bold mb-0">$168.90</h3>
-                                    <h6>This Month</h6>
-                                    <div class="badge badge-danger">23%</div>
-                                </div>
-                                <div class="flot-bar-wrapper">
-                                    <div id="column-chart" class="flot-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card stretch-card mb-3">
-                        <div class="card-body d-flex flex-wrap justify-content-between">
-                            <div>
-                                <h4 class="font-weight-semibold mb-1 text-black"> Member Profit </h4>
-                                <h6 class="text-muted">Average Weekly Profit</h6>
-                            </div>
-                            <h3 class="text-success font-weight-bold">+168.900</h3>
-                        </div>
-                    </div>
-                    <div class="card stretch-card mb-3">
-                        <div class="card-body d-flex flex-wrap justify-content-between">
-                            <div>
-                                <h4 class="font-weight-semibold mb-1 text-black"> Total Profit </h4>
-                                <h6 class="text-muted">Weekly Customer Orders</h6>
-                            </div>
-                            <h3 class="text-success font-weight-bold">+6890.00</h3>
-                        </div>
-                    </div>
-                    <div class="card stretch-card mb-3">
-                        <div class="card-body d-flex flex-wrap justify-content-between">
-                            <div>
-                                <h4 class="font-weight-semibold mb-1 text-black"> Issue Reports </h4>
-                                <h6 class="text-muted">System bugs and issues</h6>
-                            </div>
-                            <h3 class="text-danger font-weight-bold">-8380.00</h3>
-                        </div>
-                    </div>
-                    <div class="card stretch-card mb-3">
-                        <div class="card-body d-flex flex-wrap justify-content-between">
-                            <div>
-                                <h4 class="font-weight-semibold mb-1 text-black"> Issue Reports </h4>
-                                <h6 class="text-muted">System bugs and issues</h6>
-                            </div>
-                            <h3 class="text-danger font-weight-bold">-8380.00</h3>
+                            <canvas id="myChart" width="auto" height="265"></canvas>
                         </div>
                     </div>
                 </div>
@@ -82,9 +64,10 @@
 
 
 @push('script')
-<!-- Map Box -->
 <script>
     document.addEventListener('livewire:load', () => {
+
+        //--------------------- Map Box Script Start ---------------------//
         const defaultLocation = [106.82721585, -6.17555357]
         mapboxgl.accessToken = '{{ env('MAPBOX_KEY') }}';
         var map = new mapboxgl.Map({
@@ -419,10 +402,47 @@
         });
 
         document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+        //--------------------- Map Box Script End ---------------------//
 
+        //--------------------- Chart Js Script Start ---------------------//
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Peresmian', 'Audiensi', 'Hari Besar', 'Akad Nikah', 'Wawancara', 'Bantuan'],
+                datasets: [{
+                    label: 'Grafik Kegiatan',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        //--------------------- Chart Js Script End ---------------------//
 
     })
 
 </script>
-<!-- Map Box -->
 @endpush

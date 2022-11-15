@@ -17,65 +17,49 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for=""><b>Longitude :</b></label>
-                                            <input wire:model="long" type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
+                                            <label for="long"><b>Longitude :</b></label>
+                                            <input wire:model="long" type="text" class="form-control form-control-sm" id="long" placeholder="Longitude" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for=""><b>Latitude :</b></label>
-                                            <input wire:model="lat" type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for=""><b>Longitude :</b></label>
-                                            <input wire:model="prov" type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for=""><b>Latitude :</b></label>
-                                            <input wire:model="kot" type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><b>Kategori Kunjungan :</b></label>
-                                            <select class="js-example-basic-single" style="width: 100%;">
-                                                <option value="AL">Dalam Negeri</option>
-                                                <option value="WY">Luar Negeri</option>
-                                                <option value="AM">Kunjungan Tamu Negara</option>
-                                            </select>
+                                            <label for="lat"><b>Latitude :</b></label>
+                                            <input wire:model="lat" type="text" class="form-control form-control-sm" id="lat" placeholder="Latitude" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label><b>VVIP :</b></label>
-                                            <select class="js-example-basic-single" style="width: 100%;">
-                                                <option value="Presiden">- Presiden</option>
-                                                <option value="Presiden dan Ibu Negara">- Presiden dan Ibu Negara</option>
-                                                <option value="Ibu Negara">- Ibu Negara</option>
-                                                <option value="Tamu Negara">- Tamu Negara</option>
+                                            <select class="js-example-basic-single form-control-sm" style="width: 100%;" onchange="showDiv(this)">
+                                                <option value="1">- Presiden</option>
+                                                <option value="2">- Presiden dan Ibu Negara</option>
+                                                <option value="3">- Ibu Negara</option>
+                                                <option value="4">- Tamu Negara</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for=""><b>Berangkat :</b></label>
-                                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
+                                    <div id="vvip_div" class="col-md-6" style="display: none;">
+                                        <div class="form-group" >
+                                            <label for="vvip"><b>Jabatan dan Nama VVIP :</b></label>
+                                            <input  type="text" class="form-control" id="vvip" placeholder="" value="" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for=""><b>Pulang :</b></label>
-                                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
+                                            <label for="tgl_berangkat"><b>Berangkat :</b></label>
+                                            <input type="text" class="form-control form-control-sm" id="tgl_berangkat" placeholder="MM/DD/YYYY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tgl_pulang"><b>Pulang :</b></label>
+                                            <input type="text" class="form-control form-control-sm" id="tgl_pulang" placeholder="MM/DD/YYYY" />
                                         </div>
                                     </div>
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label><b>Kegiatan :</b></label>
-                                            <select class="js-example-basic-multiple" style="width: 100%;">
+                                            <select class="js-example-basic-multiple" multiple="multiple" style="width: 100%;">
                                                 <option value="Presiden">- Peresmian</option>
                                                 <option value="Presiden dan Ibu Negara">- pertemuan</option>
                                                 <option value="Ibu Negara">- Pelantikan</option>
@@ -88,7 +72,7 @@
                                             <label><b>Pilih File :</b></label>
                                             <input type="file" name="img[]" class="file-upload-default" />
                                             <div class="input-group col-xs-12">
-                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" />
+                                                <input type="text" class="form-control form-control-sm file-upload-info" disabled placeholder="Upload Image" />
                                                 <span class="input-group-append">
                                                     <button class="file-upload-browse btn btn-primary" type="button"> Upload </button>
                                                 </span>
@@ -107,6 +91,8 @@
     </div>
     <!-- Content Page Start -->
 </div>
+
+
 
 @push('script')
 <!-- Map Box -->
@@ -146,7 +132,7 @@
             ],
             "locationId": 30,
             "title": "Hello new",
-            "image": "1a1eb1e4106fff0cc3467873f0f39cab.jpeg",
+            "image": "https://images.unsplash.com/photo-1668365187350-05c997d09eba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
             "description": "Mantap"
         }
         },
@@ -167,7 +153,7 @@
             ],
             "locationId": 29,
             "title": "Rumah saya Edit",
-            "image": "0ea59991df2cb96b4df6e32307ea20ff.png",
+            "image": "https://images.unsplash.com/photo-1668429090678-4f0e6759d489?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
             "description": "oke mantap Edit"
         }
         },
@@ -188,7 +174,7 @@
             ],
             "locationId": 22,
             "title": "Update Baru Gambar",
-            "image": "d09444b68d8b72daa324f97c999c2301.jpeg",
+            "image": "https://images.unsplash.com/photo-1668367314609-3bec5426c4d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
             "description": "Update Baru"
         }
         },
@@ -209,7 +195,7 @@
             ],
             "locationId": 19,
             "title": "awdwad",
-            "image": "f0b88ffd980a764b9fca60d853b300ff.png",
+            "image": "https://images.unsplash.com/photo-1668428178242-09ee02d13340?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
             "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         }
         },
@@ -230,7 +216,7 @@
             ],
             "locationId": 18,
             "title": "adwawd",
-            "image": "4c35cb1b76af09e6205f94024e093fe6.jpeg",
+            "image": "https://images.unsplash.com/photo-1668380298208-de2df24d3a54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzOHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
             "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         }
         },
@@ -251,7 +237,7 @@
             ],
             "locationId": 12,
             "title": "adawd",
-            "image": "7c8c949fd0499eb50cb33787d680778c.jpeg",
+            "image": "https://images.unsplash.com/photo-1668066826983-2b45f1d1cfda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1MHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60",
             "description": "awdwad"
         }
         }
@@ -271,9 +257,30 @@
             markerElement.style.width = '25px'
             markerElement.style.height = '25px'
 
+            const content = `
+            <div style="overflow-y, auto; max-height:400px, width:100%">
+                <table class="table table-sm mt-2">
+                    <tbody>
+                        <tr>
+                            <td>Title</td>
+                            <td>${title}</td>
+                        </tr>
+                        <tr>
+                            <td>Picture</td>
+                            <td><img src="${image}" loading="lazy" class=""></td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>${description}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            `
+
             const popUp = new mapboxgl.Popup({
                 offset:25
-            }).setHTML(description).setMaxWidth("400px")
+            }).setHTML(content).setMaxWidth("400px")
 
             new mapboxgl.Marker(markerElement)
             .setLngLat(geometry.coordinates)
@@ -310,10 +317,39 @@
     });
 
 
+    $('#tgl_berangkat').datepicker({
+    onSelect: function(dateText, inst){
+        $('#tgl_pulang').datepicker('option', 'minDate', new Date(dateText));
+    },
+    });
+
+    $('#tgl_pulang').datepicker({
+        onSelect: function(dateText, inst){
+            $('#tgl_berangkat').datepicker('option', 'maxDate', new Date(dateText));
+        }
+    });
+
+
     })
-
-
-
 </script>
+
+<script type="text/javascript">
+    function showDiv(select){
+        if(select.value==1){
+            document.getElementById('vvip_div').style.display = "none";
+            document.getElementById('vvip').value = "Presiden";
+        } else if (select.value==2){
+            document.getElementById('vvip_div').style.display = "none";
+            document.getElementById('vvip').value = "Presiden dan Ibu Negara";
+        } else if (select.value==3){
+            document.getElementById('vvip_div').style.display = "none";
+            document.getElementById('vvip').value = "Ibu Negara";
+        } else {
+            document.getElementById('vvip_div').style.display = "block";
+            document.getElementById('vvip').value = "";
+        }
+    }
+</script>
+
 <!-- Map Box -->
 @endpush
