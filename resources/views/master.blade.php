@@ -32,8 +32,8 @@
     <!-- Logo Icon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo_perisai.ico') }}" />
 
-    <!-- Map Box -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+    <!-- Map Box-->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <!-- Map Box -->
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 
@@ -61,12 +61,14 @@
         #map {
         margin-top: 75px;
         }
-        </style>
+    </style>
+
     <!-- MMapbox Geocoder css end-->
+
 
 </head>
 <body>
-    <div class="container-scroller">
+    <div class="container-scroller pb-0">
         @include('sidebar')
         <div class="container-fluid page-body-wrapper">
             @include('navbar')
@@ -80,20 +82,17 @@
 
 
                     <!-- footer start -->
-                    <footer class="footer">
-                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © PERISAI 2022</span>
-                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sonya Elfadhila, S.E., M.A. | Diklatpim Tingkat III Tahun 2022</span>
-                        </div>
-                        <div>
-                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Subbagian Administrasi Protokol</a></span>
-                        </div>
-                    </footer>
+
                     <!-- footer end -->
                 </div>
             </div>
         </div>
     </div>
+    <footer class="footer bg-dark fixed-bottom pt-3 pb-0">
+        <div class="container">
+                <h5 class="text-center text-white">Copyright © PERISAI 2022 | Sonya Elfadhila, S.E., M.A. | Diklatpim Tingkat III Tahun 2022</h5>
+        </div>
+    </footer>
     @livewireScripts
     <!-- Scripts Master -->
 
@@ -129,8 +128,8 @@
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
 
-    <!-- mapbox js -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+    <!-- mapbox js-->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
 
     <!-- chart js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

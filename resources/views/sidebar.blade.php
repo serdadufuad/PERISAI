@@ -1,7 +1,7 @@
 <!-- partial:partials/_sidebar.html start -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-        <li class="nav-item nav-profile border-bottom">
+<nav class="sidebar sidebar-offcanvas" id="sidebar" >
+    <ul class="nav" >
+        <li class="nav-item nav-profile border-bottom" >
             <a href="" class="nav-link flex-column">
                 <div class="nav-profile-image">
                     <img src="{{ asset('assets/images/faces/'.Auth::user()->file_foto) }}" alt="profile" />
@@ -13,7 +13,7 @@
                 </div>
             </a>
         </li>
-        <li class="nav-item pt-3">
+        <li class="nav-item pt-3" >
             <a class="nav-link d-block" href="{{ url('/dashboard') }}">
                 <img class="sidebar-brand-logo" src="{{ asset('assets/images/logo perisai.png') }}" alt="" />
                 <img class="sidebar-brand-logomini" src="{{ asset('assets/images/logo perisai mini.png') }}" alt="" />
@@ -23,31 +23,31 @@
             <span class="nav-item-head">MENU PAGES</span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/dashboard') }}">
+            <a class="nav-link animated" href="{{ url('/dashboard') }}">
                 <i class="mdi mdi-view-dashboard menu-icon text-info"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/kunjungan_kerja') }}">
+            <a class="nav-link animated" href="{{ url('/kunjungan_kerja') }}">
                 <i class="mdi mdi-airplane-takeoff menu-icon text-success"></i>
                 <span class="menu-title">Kunjungan Kerja</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/biaya_kunker') }}">
+            <a class="nav-link animated" href="{{ url('/biaya_kunker') }}">
                 <i class="mdi mdi-cash-multiple menu-icon text-warning"></i>
                 <span class="menu-title">Biaya Kunker</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/settings') }}">
+            <a class="nav-link animated" href="{{ url('/settings') }}">
                 <i class="mdi mdi-settings-outline menu-icon text-dark"></i>
                 <span class="menu-title">Settings</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/logout') }}">
+            <a class="nav-link animated" href="{{ url('/logout') }}">
                 <i class="mdi mdi-logout-variant menu-icon text-danger"></i>
                 <span class="menu-title">Logout</span>
             </a>

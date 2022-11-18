@@ -1,5 +1,6 @@
 <!-- navbar start -->
 <!-- partial:partials/_settings-panel.html start -->
+<!--
 <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
 <div id="theme-settings" class="settings-panel">
     <i class="settings-close mdi mdi-close"></i>
@@ -21,6 +22,7 @@
         <div class="tiles light"></div>
     </div>
 </div>
+-->
 <!-- partial:partials/_settings-panel.html end -->
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
