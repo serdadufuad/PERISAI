@@ -1,47 +1,6 @@
+
+
 <div>
-<!-- first row starts here -->
-    <div class="row">
-        <div class="col-md-4 stretch-card grid-margin">
-            <div class="card card-rounded animated-shadow-black" style="background-image: url('{{ asset('assets/images/dashboard/card1.jpg')}}'); background-size: cover;">
-                <div class="card-body">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div>
-                        <h4 class="font-weight-semibold mb-1 text-light"> Total Anggaran </h4>
-                            <a href="{{ ('/detail_total_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
-                    </div>
-                    <h3 class="text-light font-weight-bold">Rp 99.258.456.357,-</h3>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 stretch-card grid-margin">
-            <div class="card card-rounded animated-shadow-black" style="background-image: url('{{ asset('assets/images/dashboard/card2.jpg')}}'); background-size: cover;">
-                <div class="card-body">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div>
-                        <h4 class="font-weight-semibold mb-1 text-light"> Realisasi Anggaran </h4>
-                            <a href="{{ ('/detail_realisasi_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
-                    </div>
-                    <h3 class="text-light font-weight-bold">Rp 45.258.456.357,-</h3>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 stretch-card grid-margin">
-            <div class="card card-rounded animated-shadow-black" style="background-image: url('{{ asset('assets/images/dashboard/card3.jpg')}}'); background-size: cover;">
-                <div class="card-body">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div>
-                        <h4 class="font-weight-semibold mb-1 text-light"> Total ABT </h4>
-                            <a href="{{ ('/detail_total_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
-                    </div>
-                    <h3 class="text-light font-weight-bold">Rp 35.258.456.357,-</h3>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- first row end here -->
 <!-- second row starts here -->
 <div class="row">
     <div class="col-md-12 stretch-card grid-margin">
@@ -257,4 +216,8 @@
         }
     }
 </script>
+    <!-- Datepicker-->
+    <script src="{{ asset('js/datepicker/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/datepicker/jquery-ui.min.js') }}"></script>
+
 @endpush

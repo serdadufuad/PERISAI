@@ -2,40 +2,40 @@
 <!-- first row starts here -->
     <div class="row">
         <div class="col-md-4 stretch-card grid-margin">
-            <div class="card card-rounded animated-shadow-black" style="background-image: url('{{ asset('assets/images/dashboard/card1.jpg')}}'); background-size: cover;">
+            <div class="card card-rounded animated-shadow-black" style="background-image: linear-gradient(to right bottom, #ffffff, #deddfe, #b6bdfe, #829fff, #1585ff);">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
                     <div>
-                        <h4 class="font-weight-semibold mb-1 text-light"> Total Anggaran </h4>
-                            <a href="{{ ('/detail_total_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
+                        <h4 class="font-weight-semibold mb-1k"> Total Anggaran </h4>
+                            <a href="{{ ('/detail_total_anggaran') }}"><p class="text-black">Detail<i class="mdi mdi-information"></i></p></a>
                     </div>
-                    <h3 class="text-light font-weight-bold">Rp 99.258.456.357,-</h3>
+                    <h3 class="font-weight-bold">Rp 99.258.456.357,-</h3>
                 </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 stretch-card grid-margin">
-            <div class="card card-rounded animated-shadow-black" style="background-image: url('{{ asset('assets/images/dashboard/card2.jpg')}}'); background-size: cover;">
+            <div class="card card-rounded animated-shadow-black" style="background-image: linear-gradient(to right bottom, #ffffff, #e8f8ff, #baf8ff, #98f7e8, #a6eeaf);">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
                     <div>
-                        <h4 class="font-weight-semibold mb-1 text-light"> Realisasi Anggaran </h4>
-                            <a href="{{ ('/detail_realisasi_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
+                        <h4 class="font-weight-semibold mb-1 text-black"> Realisasi Anggaran </h4>
+                            <a href="{{ ('/detail_realisasi_anggaran') }}"><p class="text-black">Detail<i class="mdi mdi-information"></i></p></a>
                     </div>
-                    <h3 class="text-light font-weight-bold">Rp 45.258.456.357,-</h3>
+                    <h3 class="text-black font-weight-bold">Rp 45.258.456.357,-</h3>
                 </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 stretch-card grid-margin">
-            <div class="card card-rounded animated-shadow-black" style="background-image: url('{{ asset('assets/images/dashboard/card3.jpg')}}'); background-size: cover;">
+            <div class="card card-rounded animated-shadow-black" style="background-image: linear-gradient(to right bottom, #ffffff, #f8f0fb, #fae0f0, #fecfdc, #ffc0c0);">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
                     <div>
-                        <h4 class="font-weight-semibold mb-1 text-light"> Total ABT </h4>
-                            <a href="{{ ('/detail_total_anggaran') }}"><h6 class="text-light">Detail <i class="mdi mdi-information"></i></h6></a>
+                        <h4 class="font-weight-semibold mb-1 text-black"> Total ABT </h4>
+                            <a href="{{ ('/detail_total_anggaran') }}"><p class="text-black">Detail<i class="mdi mdi-information"></i></p></a>
                     </div>
-                    <h3 class="text-light font-weight-bold">Rp 35.258.456.357,-</h3>
+                    <h3 class="text-black font-weight-bold">Rp 35.258.456.357,-</h3>
                 </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="card card-rounded shadow-black">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
-                    <div wire:ignore id='map' class="card card-rounded animated-shadow-blue" style='width: 100%; height: 620px;'></div>
+                    <div wire:ignore id='map' class="card card-rounded animated-shadow-blue" style='width: 100%; height: 600px'></div>
                     <div wire:ignore id="geocoder" class="geocoder" ></div>
                 </div>
                 </div>
@@ -106,18 +106,18 @@ document.addEventListener('livewire:load', () => {
         map.setFog({});
     });
 
-    map.addControl(new mapboxgl.NavigationControl())
+    map.addControl(new mapboxgl.NavigationControl());
     const zoomThreshold = 4;
 
     const loadLocations = (geoJson) => {
         geoJson.features.forEach((location) => {
-            const {geometry, properties} = location
-            const{iconSize, locationId, title, image, description} = properties
-            let markerElement = document.createElement('div')
-            markerElement.className = 'marker' + locationId
-            markerElement.id = locationId
-            markerElement.style.backgroundImage = 'url(assets/images/marker/mapbox-marker-icon-20px-red.png)'
-            markerElement.style.backgroundSize = 'cover'
+            const {geometry, properties} = location;
+            const{iconSize, locationId, title, image, description} = properties;
+            let markerElement = document.createElement('div');
+            markerElement.className = 'marker' + locationId;
+            markerElement.id = locationId;
+            markerElement.style.backgroundImage = 'url(images/marker-red.png)';
+            markerElement.style.backgroundSize = 'cover';
             markerElement.style.cursor = 'pointer';
             markerElement.style.width = '20px';
             markerElement.style.height = '48px';
@@ -140,7 +140,7 @@ document.addEventListener('livewire:load', () => {
                     </tbody>
                 </table>
             </div>
-            `
+            `;
             const popUp = new mapboxgl.Popup({
                 offset:25
                 }).setHTML(content).setMaxWidth("400px")
@@ -148,9 +148,9 @@ document.addEventListener('livewire:load', () => {
             .setLngLat(geometry.coordinates)
             .setPopup(popUp)
             .addTo(map)
-        })
+        });
     };
-    loadLocations({!! $geoJson !!})
+    loadLocations({!! $geoJson !!});
 
     map.on('zoom', () => {
         if (map.getZoom() > zoomThreshold) {
@@ -168,10 +168,10 @@ document.addEventListener('livewire:load', () => {
 
     this.marker = new mapboxgl.Marker();
         map.on('click', (e) => {
-            const longitude = e.lngLat.lng
-            const latitude = e.lngLat.lat
-            @this.long = longitude
-            @this.lat = latitude
+            const longitude = e.lngLat.lng;
+            const latitude = e.lngLat.lat;
+            @this.long = longitude;
+            @this.lat = latitude;
             var coordinates = e.lngLat;
             console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
         });
@@ -180,7 +180,7 @@ document.addEventListener('livewire:load', () => {
         accessToken: '{{ env('MAPBOX_KEY') }}',
         language: 'id-ID',
         mapboxgl: mapboxgl,
-        marker: false
+        marker: false,
     });
 
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
@@ -265,6 +265,6 @@ document.addEventListener('livewire:load', () => {
 
 //--------------------- Chart Js Script End ---------------------//
 
-})
+});
 </script>
 @endpush
