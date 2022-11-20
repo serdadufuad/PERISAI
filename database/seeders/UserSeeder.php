@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'jabatan' => 'Kasubbag Administrassi Protokol',
             'email' => 'sonya@perisai.com',
             'password' => Hash::make('123qweasd'),
-            'file_foto' => 'Sonya Elfadhila, S.E., M.A..png',
+            'file_foto' => 'Sonya Elfadhila, S.E., M.A..jpg',
         ]);
 
         $admin->assignRole('admin');

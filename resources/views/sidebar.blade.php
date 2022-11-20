@@ -1,5 +1,5 @@
 <!-- partial:partials/_sidebar.html start -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-image: linear-gradient(to bottom, #e7f6ff, #caebff, #ace1ff, #8ad6ff, #61cbff);">
+<nav class="sidebar sidebar-offcanvas pb-0" id="sidebar" style="background-image: linear-gradient(to bottom, #e7f6ff, #caebff, #ace1ff, #8ad6ff, #61cbff);">
     <ul class="nav" >
         <li class="nav-item nav-profile border-bottom" >
             <a href="{{ url('/profile') }}" class="nav-link flex-column">

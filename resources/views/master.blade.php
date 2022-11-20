@@ -80,54 +80,37 @@
             </div>
         </div>
     </div>
-    <footer class="footer bg-dark fixed-bottom pt-2 pb-0" style="background-image: linear-gradient(to left, #e7f6ff, #caebff, #ace1ff, #8ad6ff, #61cbff);">
+    <footer class="footer bg-dark fixed-bottom pt-4 pb-0" style="background-image: linear-gradient(to right, #e7f6ff, #caebff, #ace1ff, #8ad6ff, #61cbff);">
         <div class="container">
                 <p class="text-center">Copyright © PERISAI 2022 | Sonya Elfadhila, S.E., M.A. | Diklatpim Tingkat III Tahun 2022</p>
         </div>
     </footer>
     @livewireScripts
-    <!-- Scripts Master -->
+     <!-- Scripts Master -->
 
     <!-- plugins:js -->
     <script src="{{ asset('vendor/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
 
     <!-- Plugin js for this page -->
-    <script src="{{ asset('vendor/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
-
-    <script src="{{ asset('vendor/flot/jquery.flot.js') }}"></script>
-    <script src="{{ asset('vendor/flot/jquery.flot.resize.js') }}"></script>
-    <script src="{{ asset('vendor/flot/jquery.flot.categories.js') }}"></script>
-    <script src="{{ asset('vendor/flot/jquery.flot.fillbetween.js') }}"></script>
-    <script src="{{ asset('vendor/flot/jquery.flot.stack.js') }}"></script>
-    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('js/select2.js') }}"></script>
     <script src="{{ asset('vendor/typeahead.js/typeahead.bundle.min.js') }}"></script>
+
     <!-- End plugin js for this page -->
 
     <!-- inject:js -->
     <script src="{{ asset('js/off-canvas.js') }}"></script>
     <script src="{{ asset('js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('js/misc.js') }}"></script>
-    <script src="{{ asset('js/settings.js') }}"></script>
-    <script src="{{ asset('js/todolist.js') }}"></script>
-    <script src="{{ asset('js/file-upload.js') }}"></script>
     <script src="{{ asset('js/typeahead.js') }}"></script>
-    <script src="{{ asset('js/select2.js') }}"></script>
     <!-- endinject -->
 
-    <!-- Custom js for this page -->
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+
     <!-- End custom js for this page -->
 
     <!-- mapbox js v2.11.0 -->
     <script src="js/mapbox/mapbox-gl.js"></script>
     <!-- MapBox geocoder js v2.11.0 -->
     <script src="js/mapbox/mapbox-gl-geocoder.min.js"></script>
-
-    <!-- chart js -->
-    <script src="{{ asset('vendor/chart.js/chart.js') }}"></script>
-
 
     <!-- Script Page -->
     @stack('script')

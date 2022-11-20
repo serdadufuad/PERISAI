@@ -3638,7 +3638,7 @@ select.tt-hint:focus::-ms-value {
 .form-control-file,
 .form-control-range {
   display: block;
-  width: 100%; }
+  width: 100%;}
 
 .col-form-label {
   padding-top: calc(0.94rem + 1px);

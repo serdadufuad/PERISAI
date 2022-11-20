@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKegiatanKunker extends Migration
+class CreateTim extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateKegiatanKunker extends Migration
      */
     public function up()
     {
-        Schema::create('kegiatan_kunker', function (Blueprint $table) {
-            $table->foreignId('id_kunker')->references('id')->on('kunjungan_kerja');
-            $table->foreignId('id_kegiatan')->references('id')->on('kegiatan');
+        Schema::create('tim', function (Blueprint $table) {
+            $table->id();
+            $table->string('tim');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateKegiatanKunker extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kegiatan_kunker');
+        Schema::dropIfExists('tim');
     }
 }

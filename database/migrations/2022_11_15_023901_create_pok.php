@@ -15,6 +15,9 @@ class CreatePok extends Migration
     {
         Schema::create('pok', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_pok');
+            $table->string('pok');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
