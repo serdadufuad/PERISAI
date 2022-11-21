@@ -76,7 +76,7 @@ document.addEventListener('livewire:load', () => {
         const loadLocations = (geoJson) => {
             geoJson.features.forEach((location) => {
                 const {geometry, properties} = location;
-                const{iconSize, locationId, title, image, description} = properties;
+                const{locationId, data_titik, nama_vvip, tgl_berangkat, tgl_pulang, nama_kegiatan, file_ebook} = properties;
                 let markerElement = document.createElement('div');
                 markerElement.className = 'marker' + locationId;
                 markerElement.id = locationId;
@@ -86,27 +86,39 @@ document.addEventListener('livewire:load', () => {
                 markerElement.style.width = '20px';
                 markerElement.style.height = '48px';
                 const content = `
-                <div style=" auto; max-height:400px, width:100%">
+                <div class="table-responsive table-striped" style="overflow-y, auto; max-height:500px, width:100%">
                     <table class="table table-sm mt-2">
                         <tbody>
                             <tr>
-                                <td>Title</td>
-                                <td>${title}</td>
+                                <td>Data Titik</td>
+                                <td>${data_titik}</td>
                             </tr>
                             <tr>
-                                <td>Picture</td>
-                                <td><img src="${image}" loading="lazy" class=""></td>
+                                <td>VVIP</td>
+                                <td>${nama_vvip}</td>
                             </tr>
                             <tr>
-                                <td>Description</td>
-                                <td>${description}</td>
+                                <td>Berangkat</td>
+                                <td>${tgl_berangkat}</td>
+                            </tr>
+                            <tr>
+                                <td>Pulang</td>
+                                <td>${tgl_pulang}</td>
+                            </tr>
+                            <tr>
+                                <td>Nama Kegiatan</td>
+                                <td>${nama_kegiatan}</td>
+                            </tr>
+                            <tr>
+                                <td>File Ebook</td>
+                                <td><a href="${file_ebook}">File E-Book</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 `;
                 const popUp = new mapboxgl.Popup({
-                    offset:25
+                    offset:20
                     }).setHTML(content).setMaxWidth("400px")
                 new mapboxgl.Marker({element: markerElement, anchor: 'center'})
                 .setLngLat(geometry.coordinates)

@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\WithFileUploads;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 
 //Models
@@ -40,6 +40,7 @@ class KunjunganKerja extends Component
             'nama_kegiatan' => 'required',
             'kegiatan' => 'required',
             'nama_kegiatan' => 'required',
+            'file_ebook' => 'file|mimes:png,jpg,pdf|max:12288'
         ]);
 
         Kunjungan_kerja::create([
@@ -50,6 +51,7 @@ class KunjunganKerja extends Component
             'tgl_berangkat' => $this->tgl_berangkat,
             'tgl_pulang' => $this->tgl_pulang,
             'nama_kegiatan' => $this->nama_kegiatan,
+            'file_ebook' => $this->file_ebook->store('files','public'),
         ]);
 
         $id = Kunjungan_kerja::max('id');

@@ -20,6 +20,7 @@ class Kunjungan_kerja extends Model
         'tgl_berangkat',
         'tgl_pulang',
         'nama_kegiatan',
+        'file_ebook'
     ];
     protected $dates =
     [

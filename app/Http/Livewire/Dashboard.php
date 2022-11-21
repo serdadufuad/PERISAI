@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Kunjungan_kerja;
+use Carbon\Carbon;
 
 class Dashboard extends Component
 {
@@ -22,6 +23,8 @@ class Dashboard extends Component
         $customLocations = [];
 
         foreach ($locations as $location){
+            $berangkat = Carbon::parse($location->tgl_berangkat)->format('d M Y');
+            $pulang = Carbon::parse($location->tgl_pulang)->format('d M Y');
             $customLocations[] = [
                 'type' => 'Feature',
                 'geometry' => [
@@ -30,9 +33,12 @@ class Dashboard extends Component
                 ],
                 'properties' => [
                     'locationId' => $location->id,
-                    'title' => $location->kategori_kunjungan,
-                    'image' => "",
-                    'description' => $location->nama_vvip,
+                    'data_titik' => $location->data_titik,
+                    'nama_vvip' => $location->nama_vvip,
+                    'tgl_berangkat' => $berangkat,
+                    'tgl_pulang' => $pulang,
+                    'nama_kegiatan' => $location->nama_kegiatan,
+                    'file_ebook' => $location->file_ebook,
                 ]
                 ];
         }

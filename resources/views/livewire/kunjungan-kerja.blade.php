@@ -91,6 +91,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Example file input</label>
+                            <input wire:model="file_ebook" type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-lg btn-primary mr-2"> Submit </button>
                             <button class="btn btn-lg btn-danger">Cancel</button>
