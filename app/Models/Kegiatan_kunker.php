@@ -9,7 +9,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Kegiatan_kunker extends Model
 {
-    use Notifiable, HasFactory, HasRoles;
+    use Notifiable, HasFactory;
     protected $table = "kegiatan_kunker";
     protected $fillable = [
         'id_kegiatan',

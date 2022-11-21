@@ -1,7 +1,6 @@
 <div>
-<!-- first row starts here -->
     <div class="row">
-        <div class="col-md-4 stretch-card grid-margin">
+        <div class="col-sm-4 stretch-card grid-margin">
             <div class="card card-rounded animated-shadow-black" style="background-image: linear-gradient(to right bottom, #ffffff, #deddfe, #b6bdfe, #829fff, #1585ff);">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
@@ -14,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 stretch-card grid-margin">
+        <div class="col-sm-4 stretch-card grid-margin">
             <div class="card card-rounded animated-shadow-black" style="background-image: linear-gradient(to right bottom, #ffffff, #e8f8ff, #baf8ff, #98f7e8, #a6eeaf);">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
@@ -27,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 stretch-card grid-margin">
+        <div class="col-sm-4 stretch-card grid-margin">
             <div class="card card-rounded animated-shadow-black" style="background-image: linear-gradient(to right bottom, #ffffff, #f8f0fb, #fae0f0, #fecfdc, #ffc0c0);">
                 <div class="card-body">
                 <div class="d-flex justify-content-between flex-wrap">
@@ -41,50 +40,10 @@
             </div>
         </div>
     </div>
-<!-- first row end here -->
-<!-- second row starts here -->
     <div class="row">
-        <div class="col-md-6 stretch-card grid-margin">
-            <div class="card card-rounded shadow-black">
-                <div class="card-body">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div wire:ignore id='map' class="card card-rounded animated-shadow-blue" style='width: 100%; height: 575px'></div>
-                    <div wire:ignore id="geocoder" class="geocoder" ></div>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 stretch-card grid-margin">
-            <div class="card card-rounded shadow-black">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between flex-wrap">
-                            <div class="col-md-12 stretch-card grid-margin">
-                                <div class="card card-rounded animated-shadow-blue">
-                                    <div class="card-body">
-                                    <div class="d-flex justify-content-between flex-wrap">
-                                        <canvas wire:ignore id="myChart1" width="auto" height="115"></canvas>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 stretch-card grid-margin">
-                                <div class="card card-rounded animated-shadow-blue">
-                                    <div class="card-body">
-                                    <div class="d-flex justify-content-between flex-wrap">
-                                        <canvas wire:ignore id="myChart2" width="auto" height="125"></canvas>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div wire:ignore id='map' class="card card-body card-rounded shadow-black stretch-card grid-margin" style='width: 100%; height: 720px; margin-top: 5px;'></div>
     </div>
-<!-- second row end here -->
 </div>
-
-
 
 @push('script')
 <!-- Livewire Inject Start -->
@@ -97,7 +56,7 @@ document.addEventListener('livewire:load', () => {
                 container: 'map',
                 style: 'mapbox://styles/mapbox/streets-v12',
                 center: defaultLocation,
-                zoom: 1.5,
+                zoom: 2.5,
                 maxzoom: 4,
                 projection: 'globe',
             });
@@ -105,10 +64,15 @@ document.addEventListener('livewire:load', () => {
         map.on('style.load', () => {
             map.setFog({});
         });
-
-        map.addControl(new mapboxgl.NavigationControl());
+        // Add the control to the map.
+        map.addControl(
+        new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker : false
+        })
+        );
         const zoomThreshold = 4;
-
         const loadLocations = (geoJson) => {
             geoJson.features.forEach((location) => {
                 const {geometry, properties} = location;
@@ -176,94 +140,14 @@ document.addEventListener('livewire:load', () => {
                 console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
             });
 
-        const geocoder = new MapboxGeocoder({
-            accessToken: '{{ env('MAPBOX_KEY') }}',
-            language: 'id-ID',
-            mapboxgl: mapboxgl,
-            marker: false,
-        });
 
-        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+
 
 
 
 
     //----------------------------- Mapbox End ----------------------------//
-
-    //--------------------- Chart Js Script Start ---------------------//
-            const ctx1 = document.getElementById('myChart1').getContext('2d');
-            const myChart1 = new Chart(ctx1, {
-                type: 'bar',
-                data: {
-                    labels: ['Peresmian', 'Audiensi', 'Hari Besar', 'Akad Nikah', 'Wawancara', 'Bantuan'],
-                    datasets: [{
-                        label: 'Grafik Kegiatan',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            const ctx2 = document.getElementById('myChart2').getContext('2d');
-            const myChart2 = new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: ['Peresmian', 'Audiensi', 'Hari Besar', 'Akad Nikah', 'Wawancara', 'Bantuan'],
-                    datasets: [{
-                        label: 'Grafik Kegiatan',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-    //--------------------- Chart Js Script End ---------------------//
 });
 </script>
 <!-- Livewire Inject End -->

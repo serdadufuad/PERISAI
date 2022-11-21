@@ -31,8 +31,8 @@ class Dashboard extends Component
                 'properties' => [
                     'locationId' => $location->id,
                     'title' => $location->kategori_kunjungan,
-                    'image' => $location->file_ebook,
-                    'description' => $location->vvip,
+                    'image' => "",
+                    'description' => $location->nama_vvip,
                 ]
                 ];
         }
